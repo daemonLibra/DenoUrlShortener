@@ -9,16 +9,26 @@ import { UrlDatabase } from "./database.ts";
             newNumber += map[Math.floor(Math.random() * 61)];
             
         }
-        console.log(newNumber);
         return newNumber;
     }
 
     export function shortenUrl(url: string){
         const db = new UrlDatabase();
-        const shortUrl = createCode();// dont create code if already exists or url already exists ToDo
-        db.insert(url, shortUrl);
-        db.printUrls();
-        return shortUrl;
+        if(db.getUrl(url) === undefined){
+            console.log("No Entry");
+            const shortUrl = createCode();// dont create code if already exists or url already exists ToDo
+            db.insert(url, shortUrl);
+            db.close();
+            return shortUrl;
+        } else {
+            const shortUrl = db.getShortUrl(url);
+            return shortUrl;
+        }
+    }
+
+    export function getShortUrl(shortUrl: string){
+        const db = new UrlDatabase();
+        return db.getId(shortUrl);
     }
 
 

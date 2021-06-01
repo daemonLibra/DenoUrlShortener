@@ -1,4 +1,4 @@
-import { DB } from "https://deno.land/x/sqlite/mod.ts";
+import { DB } from "./deps.ts";
 
 export class UrlDatabase{
     db: DB;
@@ -16,12 +16,23 @@ export class UrlDatabase{
 
     printUrls(){
         for (const [url, shortUrl] of this.db.query("SELECT url, shortUrl FROM urls")) {
-            console.log(url, shortUrl);
           }
     }
 
-    getId(url: string){
-        for (const [abc] of this.db.query("SELECT rowid FROM urls WHERE url= ? ", [url])){
+    getUrl(url: string){
+        for (const [abc] of this.db.query("SELECT url FROM urls WHERE url= ? ", [url])){
+            return abc;
+        } 
+    }
+
+    getShortUrl(url: string){
+        for (const [abc] of this.db.query("SELECT shortUrl FROM urls WHERE url= ? ", [url])){
+            return abc;
+        } 
+    }
+
+    getId(shortUrl: string){
+        for (const [abc] of this.db.query("SELECT url FROM urls WHERE shortUrl= ? ", [shortUrl])){
             return abc;
         }  
     }
