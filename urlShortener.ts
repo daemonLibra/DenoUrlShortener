@@ -1,4 +1,4 @@
-import { UrlDatabase } from "./database.ts";
+import { UrlDatabase } from "./deps.ts";
 
     function createCode(){
         const map = new String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");

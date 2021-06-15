@@ -17,3 +17,4 @@ export { DB } from "https://deno.land/x/sqlite/mod.ts";
 export { shortenUrl, getShortUrl } from "./urlShortener.ts";
 export { isValidHttpUrl } from "./urlValidator.ts";
 export { readLine } from "./filereader.ts";
+export { UrlDatabase} from "./database.ts";
