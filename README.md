@@ -1,6 +1,6 @@
 # Url Shortener 
 
-This project is the implementation of the cloud computing programmatic assignment.
+This project is the implementation of the cloud computing assignment.
 
 ## Requirements
 A website with the following functionality needs to be developed
