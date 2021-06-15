@@ -1,22 +1,30 @@
-import { Router } from "../deps.ts";
-import { shortenUrl, getShortUrl } from "../deps.ts";
+import { Router, shortenUrl, getShortUrl, isValidHttpUrl } from "../deps.ts";
 
 const router = Router();
 
 // GET home page.
 router.get("/", (_req, res, _next) => {
   res.render("index", {
-    title: "Opine",
+    title: "URL Shortener",
   });
 });
 
 router.get("/:url", (_req, res, _next) => {
-  const test = getShortUrl(_req.params.url);
-  console.log(test);
-  res.redirect(`https://${test}`);
+    res.redirect(getShortUrl(_req.params.url));  
 });
 
 router.post("/", (_req, res, _next) => {
-  res.send(`http://localhost:3000/${shortenUrl(_req.body.url)}`);
+    if(isValidHttpUrl(_req.body.url) == true){
+      res.send(`http://localhost:3000/${shortenUrl(_req.body.url)}`);
+    } else if (_req.body.url.includes("https") || _req.body.url.includes("http")){
+      res.send("Url is not valid, try again");
+    } else {
+      let abc = `https://${_req.body.url}`;
+      if(isValidHttpUrl(abc) == true){
+        res.send(`http://localhost:3000/${shortenUrl(abc)}`);
+      } else {
+        res.send("Url is not valid, try again");
+      }
+    }
 });
 export default router;

@@ -3,11 +3,10 @@ import { DB } from "./deps.ts";
 export class UrlDatabase{
     db: DB;
 
-    constructor(){
-        this.db = new DB("url.db");
+    constructor(dbname: string){
+        this.db = new DB(dbname);
         this.db.query(
-            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT, UNIQUE(url))"
-          );
+            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT, UNIQUE(url))");
     }
 
     insert(url: string, shortenUrl: string){
@@ -35,6 +34,12 @@ export class UrlDatabase{
         for (const [abc] of this.db.query("SELECT url FROM urls WHERE shortUrl= ? ", [shortUrl])){
             return abc;
         }  
+    }
+
+    getLength(){
+        for (const [abc] of this.db.query("SELECT COUNT(*) FROM urls")){
+            return abc;
+        } 
     }
 
     close(){

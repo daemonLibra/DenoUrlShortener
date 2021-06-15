@@ -15,3 +15,5 @@ export { createError } from "https://deno.land/x/http_errors@2.1.0/mod.ts";
 export { renderFileToString } from "https://deno.land/x/dejs@0.9.3/mod.ts";
 export { DB } from "https://deno.land/x/sqlite/mod.ts";
 export { shortenUrl, getShortUrl } from "./urlShortener.ts";
+export { isValidHttpUrl } from "./urlValidator.ts";
+export { readLine } from "./filereader.ts";
