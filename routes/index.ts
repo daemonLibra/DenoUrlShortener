@@ -13,18 +13,20 @@ router.get("/", (_req, res, _next) => {
 });
 
 router.get("/:url", (_req, res, _next) => {
-    res.redirect(getShortUrl(_req.params.url, dbname));
+  res.redirect(getShortUrl(_req.params.url, dbname));
 });
 
 router.post("/", (_req, res, _next) => {
-  if(isValidHttpUrl(_req.body.url) == true){
+  if (_req.body.url == null) {
+    res.send("Url is not valid, try again");
+  } else if (isValidHttpUrl(_req.body.url) == true) {
     short = `http://localhost:3000/${shortenUrl(_req.body.url, dbname)}`;
     res.redirect("/");
-  } else if (_req.body.url.includes("https") || _req.body.url.includes("http")){
+  } else if (_req.body.url.includes("https") || _req.body.url.includes("http")) {
     res.send("Url is not valid, try again");
   } else {
     let abc = `https://${_req.body.url}`;
-    if(isValidHttpUrl(abc) == true){
+    if (isValidHttpUrl(abc) == true) {
       short = `http://localhost:3000/${shortenUrl(abc, dbname)}`;
       res.redirect("/");
     } else {
