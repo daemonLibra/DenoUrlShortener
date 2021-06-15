@@ -32,12 +32,8 @@ This is used to provide short and unproblematic aliases (easier to remember, qui
 
 ## Usage and commands
 - [x] Download the source code
-- [x] Open your editor and run npm install 
-- [x] Run npm install express body-parser mongoose fs
-- [x] Run npm install -g nodemon --save-dev
-- [x] Run npm install valid-url
-- [x] Run npm run start dev to start the service locally or run docker-compose build and docker-compose up to start the docker container 
-- [x] Run npm run test test/{the required test} to start the unit tests 
+- [x] Run deno run --allow-all mod.ts start the service locally or run docker-compose build and docker-compose up to start the docker container 
+- [x] Run deno test --allow-all to start the unit tests
 
 ## Tests
 - [x] deno test --allow-all
