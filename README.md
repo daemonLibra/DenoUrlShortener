@@ -32,7 +32,7 @@ This is used to provide short and unproblematic aliases (easier to remember, qui
 
 ## Usage and commands
 - [x] Download the source code
-- [x] Run deno run --allow-net --allow-read --allow-env mod.ts start the service locally or run docker build -t app . && docker run -it --init -p 3000:3000 app to start the docker container 
+- [x] Run deno run --allow-net --allow-read --allow-env mod.ts to start the service locally or run docker build -t app . && docker run -it --init -p 3000:3000 app to start the docker container 
 
 ## Tests
 - [x] Run deno test --allow-read --allow-write to start the unit tests
