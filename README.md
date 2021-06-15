@@ -32,8 +32,7 @@ This is used to provide short and unproblematic aliases (easier to remember, qui
 
 ## Usage and commands
 - [x] Download the source code
-- [x] Run deno run --allow-all mod.ts start the service locally or run docker-compose build and docker-compose up to start the docker container 
-- [x] Run deno test --allow-all to start the unit tests
+- [x] Run deno run --allow-all mod.ts start the service locally or run docker build -t app . && docker run -it --init -p 3000:3000 app to start the docker container 
 
 ## Tests
-- [x] deno test --allow-all
+- [x] Run deno test --allow-all to start the unit tests
