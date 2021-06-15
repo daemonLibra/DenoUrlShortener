@@ -6,7 +6,7 @@ export class UrlDatabase{
     constructor(dbname: string){
         this.db = new DB(dbname);
         this.db.query(
-            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT, UNIQUE(url))");
+            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT, UNIQUE(url, shortUrl))");
     }
 
     insert(url: string, shortenUrl: string){

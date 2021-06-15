@@ -4,7 +4,6 @@ export function isValidHttpUrl(url: string) {
     try {
         tempurl = new URL(url);
     } catch (_) {
-        console.log("not an url");
       return false;  
     }
     
