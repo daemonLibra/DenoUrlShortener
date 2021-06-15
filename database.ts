@@ -6,11 +6,11 @@ export class UrlDatabase{
     constructor(dbname: string){
         this.db = new DB(dbname);
         this.db.query(
-            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT, UNIQUE(url, shortUrl))");
+            "CREATE TABLE IF NOT EXISTS urls (url TEXT, shortUrl TEXT)");
     }
 
     insert(url: string, shortenUrl: string){
-        this.db.query("INSERT OR IGNORE INTO urls (url, shortUrl) VALUES (?, ?)", [url, shortenUrl]);
+        this.db.query("INSERT INTO urls (url, shortUrl) VALUES (?, ?)", [url, shortenUrl]);
     }
 
     printUrls(){

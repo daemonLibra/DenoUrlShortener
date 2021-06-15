@@ -40,6 +40,18 @@ Deno.test({
   });
 
   Deno.test({
+    name: "Insert new Url to the database",
+    async fn() { 
+        shortenUrl("https://protonvpn.com", "./tests/test.db");
+        const db = new UrlDatabase("./tests/test.db");
+        assertEquals(db.getLength(), 1001);
+        db.close();
+    },
+    sanitizeResources: false,
+    sanitizeOps: false
+  });
+
+  Deno.test({
     name: "length of max 5",
     async fn() { 
         const db = new UrlDatabase("./tests/test.db");
